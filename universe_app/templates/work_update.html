@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+<div class="section-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="section-container-spacer text-center">
+            <h1 class="h2">06 : Work-Update</h1>
+          </div>
+
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+      <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <label>Work Images All</label>
+        <input type="file" name="images_all" value="" multiple>
+        {% if messages %}
+                {% for message in messages %}
+                    <div>{{message}}</div>
+                {% endfor %}
+        {% endif %}
+        <input type="submit" value="Update Work">
+
+      </form>
+          </div>
+        </div>
+    </div>
+      </div>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta content="description" name="description">
+  <meta name="google" content="notranslate" />
+  <meta content="Mashup templates have been developped by Orson.io team" name="author">
+
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'blog_asserts/assets/apple-icon-180x180.png' %}">
+  <link href="{% static 'blog_asserts/assets/favicon.ico' %}" rel="icon">
+
+  <title>Title page</title>
+
+<link href="{% static 'blog_asserts/main.3f6952e4.css' %}" rel="stylesheet"></head>
+
+<body class="minimal">
+<div id="site-border-left"></div>
+<div id="site-border-right"></div>
+<div id="site-border-top"></div>
+<div id="site-border-bottom"></div>
+<!-- Add your content of header -->
+
+<header>
+  <nav class="navbar  navbar-inverse navbar-fixed-top ">
+    <div class="container-fluid">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      {% if request.user.is_authenticated %}
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav ">
+          {% for n in navbar_queryset %}
+          <li><a href="{{ n.url }}" title="">{{ n.title }}</a></li>
+          {% endfor %}
+        </ul>
+
+
+      </div>
+      {% else %}
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav ">
+          {% for n in guest_queryset %}
+          <li><a href="{{ n.url }}" title="">{{ n.title }}</a></li>
+          {% endfor %}
+        </ul>
+
+
+      </div>
+      {% endif %}
+    </div>
+  </nav>
+</header>
+
+
+{% block content %}
+
+{% endblock %}
+
+<footer class="footer-container text-center">
+  <div class="container" >
+    <div class="row">
+      <div class="col-xs-12 ">
+        <p>© UNTITLED | Website created with
+          {% for i in footer_queryset %}
+          <a href="{{ i.url }}" title="{{ i.title }}">{{ i.text }}</a>
+          {% endfor %}
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function (event) {
+     type();
+     movingBackgroundImage();
+  });
+</script>
+
+
+<script type="text/javascript" src="{% static 'blog_asserts/main.70a66962.js' %}"></script></body>
+
+</html>

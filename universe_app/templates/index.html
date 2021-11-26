@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Add your site or app content here -->
+  <div class="hero-full-container background-image-container white-text-container" style="background-image: url('{{ settings_queryset.background_image.url }}')">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="hero-full-wrapper">
+            <div class="text-content">
+              <h1>{{ settings_queryset.blog_title }}<br>
+                <span id="typed-strings">
+                  <span>{{ settings_queryset.blog_subtitle_f }}</span>
+                  <span>{{ settings_queryset.blog_subtitle_s }}</span>
+                  <span>{{ settings_queryset.blog_subtitle_t }}</span>
+                </span>
+                <span id="typed"></span>
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}

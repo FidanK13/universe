@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+
+<div class="section-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <img src="{{  work_queryset.work_head_image.url }}" class="img-responsive" alt="">
+        <div class="card-container">
+          <div class="text-center">
+            <h1 class="h2">{{ work_queryset.id }} : {{ work_queryset.work_title}}</h1>
+          </div>
+          <p>{{work_queryset.work_subtitle }}</p>
+
+          <blockquote>
+               <p > {{ work_queryset.work_text|safe }}</p>
+
+            <small class="pull-right">{{work_queryset.user_id}} on {{ work_queryset.work_date }}</small>
+          </blockquote>
+        </div>
+      </div>
+
+
+
+      <div class="col-md-8 col-md-offset-2 section-container-spacer">
+        <div class="row">
+          {% for image in work_image_queryset %}
+          <div class="col-xs-12 col-md-6">
+            <img src="{{ image.images.url }}" class="img-responsive" alt="">
+            <p>{{ image.description }}</p>
+          </div>
+          {% endfor %}
+
+        </div>
+      </div>
+
+      <div class="col-xs-12">
+        <img src="{{  work_queryset.work_foot_image.url }}" class="img-responsive" alt="">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
